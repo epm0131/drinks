@@ -4,9 +4,18 @@
   angular.module('drink', [ 'ui.router' ])
     .config(routerConfig);
 
-  routerConfig.$inject = [ '$stateProvider'];
+  routerConfig.$inject = [ '$stateProvider', '$urlRouterProvider'];
 
-  function routerConfig($stateProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider) {
+
+      $urlRouterProvider.when('', '/');
+
+      $stateProvider
+        .state({
+          name: 'home',
+          url: '/',
+          templateUrl:'views/home.template.html'
+        });
 
       $stateProvider
         .state({

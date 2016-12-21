@@ -10,6 +10,15 @@
     console.log('creating DrinkListController');
     var vm =this;
     this.drinks = [];
+    this.drink = {};
+
+    DrinkService.getOneDrink()
+    .then(function successHandler(data){
+      vm.drink = data;
+    })
+    .catch (function failHandler(xhr) {
+      console.log(xhr);
+    });
 
     DrinkService.getAllDrinks()
     .then(function  successHandler(data) {

@@ -61,17 +61,56 @@ module.exports = function(grunt) {
       },
       js: {
         files: [ 'src/js/**/*.js' ],
-        tasks: [ 'jshint', 'concat' ]
+        tasks: [ 'jshint', 'karma', 'concat' ]
       },
+      test: {
+        files: [ 'test/specs/**/*.js' ],
+        tasks: [ 'test' ]
+      }
+    },
+
+    karma: {
+      options: {
+        frameworks: [ 'mocha', 'chai' ],
+        client: {
+          mocha: {
+            ui: 'bdd'
+          }
+        },
+        browsers: [ 'PhantomJS' ],
+        singleRun: true,
+
+        preprocessors: {
+          'src/js/**/*.js': [ 'coverage' ]
+        },
+        reporters: [ 'dots', 'coverage' ],
+        coverageReporter: {
+          type: 'text-summary'
+        }
+      },
+      drinks: {
+        options: {
+          files: [
+            'node_modules/angular/angular.js',
+            'node_modules/angular-ui-router/release/angular-ui-router.js',
+            'node_modules/angular-mocks/angular-mocks.js',
+            'src/js/drink.module.js',
+            'src/js/drink.service.js',
+            'src/js/drinkList.controller.js',
+            'test/specs/drink.service.spec.js'
+          ]
+        }
+      }
     }
   });
 
+ grunt.loadNpmTasks('grunt-karma');
  grunt.loadNpmTasks('grunt-contrib-copy');
  grunt.loadNpmTasks('grunt-contrib-clean');
  grunt.loadNpmTasks('grunt-contrib-jshint');
  grunt.loadNpmTasks('grunt-contrib-concat');
  grunt.loadNpmTasks('grunt-contrib-watch');
 
- grunt.registerTask('test', ['jshint']);
+ grunt.registerTask('test', ['jshint', 'karma']);
  grunt.registerTask('default', [ 'clean', 'test', 'copy', 'concat' ]);
 };
