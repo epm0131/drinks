@@ -6,12 +6,37 @@
     ng-model='list.drinkName'>
   <input type='submit' value='submit'>
   <section>
-      {{list.drink}}
+      <aside>
+      <li>{{list.drink[0].strDrink}}</li>
+      <li>{{list.drink[0].strCategory}}</li>
+      <li>{{list.drink[0].strGlass}}</li>
+      <li>{{list.drink[0].strInstructions}}</li>
+    </aside>
+    <section>
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient3}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient4}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient5}}-small.png">
+    </section>
+    <ul>
+      <li>{{list.drink[0].strIngredient1}}</li>
+      <li>{{list.drink[0].strIngredient2}}</li>
+      <li>{{list.drink[0].strIngredient3}}</li>
+      <li>{{list.drink[0].strIngredient4}}</li>
+      <li>{{list.drink[0].strIngredient5}}</li>
+      <li>{{list.drink[0].strMeasure1}}</li>
+      <li>{{list.drink[0].strMeasure2}}</li>
+      <li>{{list.drink[0].strMeasure3}}</li>
+      <li>{{list.drink[0].strMeasure4}}</li>
+      <li>{{list.drink[0].strMeasure5}}</li>
+    </ul>
   </section>
+  <cite>
+    <img src='{{list.drink[0].strDrinkThumb}}'>
+  </cite>
 
 </form>
-
-
 
 <!-- <ul>
   <li ng-repeat='drink in list.drinks'>

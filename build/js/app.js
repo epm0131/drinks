@@ -103,11 +103,9 @@
     this.drink = {};
 
     this.lookUpDrink = function lookUpDrink(drinkName){
-      console.log('I am in of the lookUpDrink!?!', drinkName);
       DrinkService.getOneDrink(drinkName)
       .then(function successHandler(data){
         vm.drink = data;
-        console.log('where i be?!?!', data);
       })
       .catch (function failHandler(xhr) {
         console.log(xhr);

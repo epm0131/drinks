@@ -11,8 +11,6 @@
 
     beforeEach(module('drink'));
 
-    console.log('do i get here?');
-
     beforeEach(inject(function(_$rootScope_, _$httpBackend_, _DrinkService_) {
       DrinkService = _DrinkService_;
       $httpBackend = _$httpBackend_;
