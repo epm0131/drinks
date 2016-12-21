@@ -15,22 +15,21 @@
 
       };
       /**
-       * Get all the detail associated with that one cocktail in the database
+       * Get all the information about the cocktail when given name
        * I transform the response from angular to only return data in the
        * promise callback.
+       * @param {string} drinkName the search string.
        * @return {promise} Ajax callback promise with transformed data.
        */
-      function getOneDrink() {
+      function getOneDrink(drinkName) {
         return $http({
-          url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=15112',
+          url: 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkName,
           method: 'GET'
         })
         .then(function transformDrinkResponse(response) {
-          console.log('do i even get here??', response.data.drinks);
           return response.data.drinks;
         });
       }
-
       /**
        * Get cocktail data from cocktail database.  I transform the response
        * from angular to only return data in the promise callback.

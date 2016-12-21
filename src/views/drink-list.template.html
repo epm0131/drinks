@@ -1,6 +1,21 @@
-<ul>
+<form name='searchDrink' ng-submit='list.lookUpDrink(list.drinkName)'>
+  <input
+    type='text'
+    name='searchDrink'
+    placeholder='Type your cocktail here!'
+    ng-model='list.drinkName'>
+  <input type='submit' value='submit'>
+  <section>
+      {{list.drink}}
+  </section>
+
+</form>
+
+
+
+<!-- <ul>
   <li ng-repeat='drink in list.drinks'>
     <h1>{{drink.strDrink}}</h1>
     <img src='{{drink.strDrinkThumb}}'>
   </li>
-</ul>
+</ul> -->
