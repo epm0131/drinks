@@ -42,6 +42,12 @@ module.exports = function(grunt) {
             cwd: 'node_modules/angular-ui-router/release',
             src: [ 'angular-ui-router.js'],
             dest: 'build/js/'
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/jquery/dist',
+            src: [ 'jquery.js' ],
+            dest: 'build/js'
           }
         ]
       },
@@ -93,6 +99,7 @@ module.exports = function(grunt) {
           files: [
             'node_modules/angular/angular.js',
             'node_modules/angular-ui-router/release/angular-ui-router.js',
+            'node_modules/jquery/dist/jquery.js',
             'node_modules/angular-mocks/angular-mocks.js',
             'src/js/drink.module.js',
             'src/js/drink.service.js',

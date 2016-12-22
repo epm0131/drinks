@@ -27,6 +27,7 @@
           method: 'GET'
         })
         .then(function transformDrinkResponse(response) {
+          console.log(response.data.drinks);
           return response.data.drinks;
         });
       }
