@@ -104,7 +104,8 @@ module.exports = function(grunt) {
             'src/js/drink.module.js',
             'src/js/drink.service.js',
             'src/js/drinkList.controller.js',
-            'test/specs/drink.service.spec.js'
+            'test/specs/drink.service.spec.js',
+            'test/specs/drinkList.controller.spec.js'
           ]
         }
       }

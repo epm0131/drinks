@@ -40,6 +40,8 @@
     DrinkService.$inject = [ '$http' ];
 
     function DrinkService($http) {
+      var ingredient = null;
+      var blankIngredient = null;
 
       return {
 
@@ -55,12 +57,19 @@
        * @return {promise} Ajax callback promise with transformed data.
        */
       function getOneDrink(drinkName) {
+        if (!drinkName){
+          return; 
+        }
         return $http({
           url: 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkName,
           method: 'GET'
         })
         .then(function transformDrinkResponse(response) {
-          console.log(response.data.drinks);
+           ingredient = response.data.drinks[0].strIngredient4;
+          if (ingredient === '') {
+            blankIngredient = true;
+          }
+          console.log(response.data.drinks[0].strIngredient3);
           return response.data.drinks;
         });
       }

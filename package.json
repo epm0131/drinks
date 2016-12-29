@@ -2,7 +2,7 @@
   "name": "drinks",
   "version": "1.0.0",
   "description": "Final Project - Drinks based off your mood!",
-  "main": "index.js",
+  "main": "src/server/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,7 +39,11 @@
     "phantomjs-prebuilt": "^2.1.14"
   },
   "dependencies": {
+    "ajax-request": "^1.2.1",
     "angular": "^1.6.0",
-    "jquery": "^3.1.1"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "mongodb": "^2.2.16"
   }
 }
