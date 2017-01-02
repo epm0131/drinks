@@ -1,15 +1,31 @@
+'use strict';
+
 var express = require('express');
 var sentiment = require('../model/sentiment.js');
+var Language = require('@google-cloud/language');
 var router = express.Router();
 
 router.get('/', function grabKey(req, res) {
-  sentiment.getKey(function dataRetrieved(err, data) {
-    if(err) {
+  var key = sentiment.getKey();
+
+  var languageAnalyzer = Language({
+    projectId: key.project_id,
+    credentials: key,
+  });
+
+  var document = languageAnalyzer.document('jordan feeling sad today?');
+
+  document.detectSentiment(function(err, sentiment){
+    if(err){
       console.log(err);
+      res.status(500).send('Oops something went wrong');
       return;
     }
-    res.json(data);
+    res.json({
+      sentiment: sentiment
+    });
   });
+
 });
 
 module.exports = router;
