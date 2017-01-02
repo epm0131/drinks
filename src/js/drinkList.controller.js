@@ -20,7 +20,7 @@
       .then(function successHandler(data){
         vm.drink = data;
       })
-      .catch (function failHandler(xhr) {
+      .catch(function failHandler(xhr) {
         console.log(xhr);
       });
     };

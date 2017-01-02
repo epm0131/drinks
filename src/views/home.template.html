@@ -1,1 +1,12 @@
 <h1>Welcome!!!!</h1>
+
+<form name='howAreYou' ng-submit=feelings.calculateSentiment(feelings.sentiment)>
+  <input
+    type='text'
+    name='howAreYou'
+    placeholder='Tell me how you feel??'
+    ng-model='feelings.sentiment'>
+  <input type='submit' value='submit'>  
+
+
+</form>
