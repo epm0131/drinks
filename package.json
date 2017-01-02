@@ -39,6 +39,7 @@
     "phantomjs-prebuilt": "^2.1.14"
   },
   "dependencies": {
+    "@google-cloud/language": "^0.7.0",
     "ajax-request": "^1.2.1",
     "angular": "^1.6.0",
     "body-parser": "^1.15.2",

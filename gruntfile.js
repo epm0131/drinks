@@ -119,6 +119,6 @@ module.exports = function(grunt) {
  grunt.loadNpmTasks('grunt-contrib-concat');
  grunt.loadNpmTasks('grunt-contrib-watch');
 
- grunt.registerTask('test', ['jshint', 'karma']);
+ grunt.registerTask('test', ['jshint', 'karmaz']);
  grunt.registerTask('default', [ 'clean', 'test', 'copy', 'concat' ]);
 };

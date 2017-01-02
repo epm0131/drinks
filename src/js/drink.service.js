@@ -25,7 +25,7 @@
        */
       function getOneDrink(drinkName) {
         if (!drinkName){
-          return; 
+          return;
         }
         return $http({
           url: 'http://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + drinkName,
@@ -36,7 +36,6 @@
           if (ingredient === '') {
             blankIngredient = true;
           }
-          console.log(response.data.drinks[0].strIngredient3);
           return response.data.drinks;
         });
       }

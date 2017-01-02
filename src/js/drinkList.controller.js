@@ -13,6 +13,9 @@
     this.drink = {};
 
     this.lookUpDrink = function lookUpDrink(drinkName){
+      if(typeof(drinkName) !== 'string') {
+        return;
+      }
       DrinkService.getOneDrink(drinkName)
       .then(function successHandler(data){
         vm.drink = data;
