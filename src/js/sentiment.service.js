@@ -19,12 +19,15 @@
        * @return {promise} Ajax callback promise with transformed data.
        */
       function analyzeSentiment(sentiment) {
-        if(!sentiment){
+        if(typeof(sentiment) !== 'string') {
           return;
         }
         return $http({
-          url: '/sentiment',
-          method: 'GET'
+          url: '/sentiment?feeling=' + sentiment,
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
         })
         .then(function transformSentimentResponse(response){
           return response.data;

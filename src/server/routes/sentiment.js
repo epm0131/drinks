@@ -13,7 +13,9 @@ router.get('/', function grabKey(req, res) {
     credentials: key,
   });
 
-  var document = languageAnalyzer.document('jordan feeling sad today?');
+  console.log(req);
+
+  var document = languageAnalyzer.document(req.query.feeling);
 
   document.detectSentiment(function(err, sentiment){
     if(err){
