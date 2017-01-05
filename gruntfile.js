@@ -51,12 +51,37 @@ module.exports = function(grunt) {
           }
         ]
       },
+      sass: {
+        allStyles: {
+          files: {
+            'build/css/styles.css': 'src/sass/main.scss'
+          }
+        }
+      },
+      images: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: 'image/**',
+            dest: 'build/'
+          }
+        ]
+      },
     },
 
     concat: {
       js: {
         src: [ 'src/js/**/*.js'],
         dest: 'build/js/app.js'
+      }
+    },
+
+    sass: {
+      styles: {
+        files: {
+          'build/css/style.css': 'src/sass/main.scss'
+        }
       }
     },
 
@@ -72,7 +97,16 @@ module.exports = function(grunt) {
       test: {
         files: [ 'test/specs/**/*.js' ],
         tasks: [ 'test' ]
+      },
+      sass: {
+        files: ['src/sass/**/*.scss'],
+        tasks: [ 'sass' ]
+      },
+      image: {
+        files: [ 'src/image/**' ],
+        tasks: [ 'copy:image' ]
       }
+
     },
 
     karma: {
@@ -114,11 +148,12 @@ module.exports = function(grunt) {
 
  grunt.loadNpmTasks('grunt-karma');
  grunt.loadNpmTasks('grunt-contrib-copy');
+ grunt.loadNpmTasks('grunt-contrib-sass');
  grunt.loadNpmTasks('grunt-contrib-clean');
  grunt.loadNpmTasks('grunt-contrib-jshint');
  grunt.loadNpmTasks('grunt-contrib-concat');
  grunt.loadNpmTasks('grunt-contrib-watch');
 
  grunt.registerTask('test', ['jshint', 'karma']);
- grunt.registerTask('default', [ 'clean', 'test', 'copy', 'concat' ]);
+ grunt.registerTask('default', [ 'clean', 'test', 'copy', 'sass', 'concat' ]);
 };

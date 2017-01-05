@@ -12,8 +12,8 @@
         analyzeSentiment: analyzeSentiment
       };
       /**
-       * Gets a number that is calculated based on the words that are used to
-       * describe ones mood.  I transform the response from angular to only
+       * Gets a number that is calculated based on the text that is used to
+       * describe one's mood.  I transform the response from angular to only
        * return data in the promise callback.
        * @param  {string} sentiment the sentence describing your mood.
        * @return {promise} Ajax callback promise with transformed data.
@@ -30,7 +30,7 @@
           }
         })
         .then(function transformSentimentResponse(response){
-          return response.data;
+          return response.data.sentiment;
         });
       }
     }

@@ -1,1 +1,11 @@
+# Dependency directories
+
 node_modules/
+
+# Sassy Stuff
+
+.sass-cache/
+
+# Build folder
+
+build/

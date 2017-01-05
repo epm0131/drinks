@@ -12,6 +12,11 @@
     this.drinkName = '';
     this.drink = {};
 
+    /**
+     * When provided a name of a drink it will pull all the details associated
+     * with that drink name.
+     * @param  {string} drinkName the name of drink you want to look up
+     */
     this.lookUpDrink = function lookUpDrink(drinkName){
       if(typeof(drinkName) !== 'string') {
         return;

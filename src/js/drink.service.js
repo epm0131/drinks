@@ -13,7 +13,8 @@
       return {
 
         getOneDrink: getOneDrink,
-        getAllDrinks: getAllDrinks
+        getAllDrinks: getAllDrinks,
+        getRandomDrink: getRandomDrink
 
       };
       /**
@@ -49,7 +50,7 @@
           url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic',
           method: 'GET'
         })
-      .then(function transformDrinkResponse(response) {
+        .then(function transformDrinkResponse(response) {
         var hasImage = [];
         response.data.drinks.forEach(function noImage(each) {
           if (each.strDrinkThumb) {
@@ -59,6 +60,21 @@
         return hasImage;
       });
 
+    }
+    /**
+     * Get a random cocktail from the data base and have all it's detail with it.
+     * I transform the response from angular to only return data in the promise
+     * callback.
+     * @return {promise} Ajax callback promise with transformed data.
+     */
+    function getRandomDrink() {
+      return $http({
+        url: 'http://www.thecocktaildb.com/api/json/v1/1/random.php',
+        method: 'GET'
+      })
+      .then(function transformDrinkResponse(response) {
+        return response.data.drinks[0];
+      });
     }
   }
 
