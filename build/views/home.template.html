@@ -1,1 +1,41 @@
 <h1>Welcome!!!!</h1>
+
+<form name='howAreYou' ng-submit=feelings.calculateSentiment(feelings.sentiment)>
+  <input
+    type='text'
+    name='howAreYou'
+    placeholder='Tell me how you feel??'
+    ng-model='feelings.sentiment'>
+  <input type='submit' value='submit'>
+  <section>
+    <aside>
+      <li>{{feelings.drink.strDrink}}</li>
+      <li>{{feelings.drink.strCategory}}</li>
+      <li>{{feelings.drink.strGlass}}</li>
+      <li>{{feelings.drink.strInstructions}}</li>
+    </aside>
+    <section>
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient1}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient2}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient3}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient4}}-small.png">
+      <img src="http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient5}}-small.png">
+    </section>
+    <ul>
+      <li>{{feelings.drink.strIngredient1}}</li>
+      <li>{{feelings.drink.strIngredient2}}</li>
+      <li>{{feelings.drink.strIngredient3}}</li>
+      <li>{{feelings.drink.strIngredient4}}</li>
+      <li>{{feelings.drink.strIngredient5}}</li>
+      <li>{{feelings.drink.strMeasure1}}</li>
+      <li>{{feelings.drink.strMeasure2}}</li>
+      <li>{{feelings.drink.strMeasure3}}</li>
+      <li>{{feelings.drink.strMeasure4}}</li>
+      <li>{{feelings.drink.strMeasure5}}</li>
+    </ul>
+  </section>
+  <cite>
+    <img src='{{feelings.drink[0].strDrinkThumb}}'>
+  </cite>
+
+</form>
