@@ -9,6 +9,11 @@
   function DrinkListController( DrinkService ) {
     var vm = this;
     this.drinks = [];
+    this.randomDrink = {};
+    this.randomDrink1 = {};
+    this.randomDrink2= {};
+    this.randomDrink3 = {};
+    this.randomDrink4 = {};
     this.drinkName = '';
     this.drink = {};
 
@@ -38,5 +43,30 @@
       console.log(xhr);
     });
 
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink = data;
+    });
+
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink1 = data;
+    });
+
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink2 = data;
+    });
+
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink3 = data;
+    });
+
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink4 = data;
+    });
+    
   }
 }());

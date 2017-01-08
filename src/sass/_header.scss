@@ -1,20 +1,59 @@
-.mynavbar {
-  margin: $navMargin auto;
-  width: $navWidth;
-}
+header {
+  text-align: center;
+  background-color: $headerBackgroundColor;
 
-.home-button{
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.home-button:hover, .home-button:focus, .home-button:active {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+  .mynavbar {
+    margin: $navMargin auto;
+    width: $navWidth;
+    .home-button{
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective($buttonPerspective) translateZ(0);
+      transform: perspective($buttonPerspective) translateZ(0);
+      box-shadow: 0 0 $buttonBoxShadow transparent;
+      -webkit-transition-duration: $buttonTransition;
+      transition-duration: $buttonTransition;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      background-color: #AC58FA;
+    }
+    .home-button:hover, .home-button:focus, .home-button:active {
+      -webkit-transform: scale($buttonTransform);
+      transform: scale($buttonTransform);
+    }
+
+    .list-button{
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective($buttonPerspective) translateZ(0);
+      transform: perspective($buttonPerspective) translateZ(0);
+      box-shadow: 0 0 $buttonBoxShadow transparent;
+      -webkit-transition-duration: $buttonTransition;
+      transition-duration: $buttonTransition;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      background-color: #FA8258;
+    }
+    .list-button:hover, .list-button:focus, .list-button:active {
+      -webkit-transform: scale($buttonTransform);
+      transform: scale($buttonTransform);
+    }
+
+    .about-button{
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: perspective($buttonPerspective) translateZ(0);
+      transform: perspective($buttonPerspective) translateZ(0);
+      box-shadow: 0 0 $buttonBoxShadow transparent;
+      -webkit-transition-duration: $buttonTransition;
+      transition-duration: $buttonTransition;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+      background-color: #2EFE64;
+    }
+    .about-button:hover, .about-button:focus, .about-button:active {
+      -webkit-transform: scale($buttonTransform);
+      transform: scale($buttonTransform);
+    }
+  }
 }

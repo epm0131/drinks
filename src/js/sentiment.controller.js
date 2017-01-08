@@ -12,6 +12,7 @@
       this.sentiment = '';
       this.sentimentValue = null;
       this.drink = {};
+      this.showStuff = false;
       /**
        * Will given a string this will calculate a sentiment based on what words
        * are passed into this funciton.
@@ -26,9 +27,9 @@
             vm.sentimentValue = data;
             DrinkService.getRandomDrink()
               .then(function (drink) {
-                console.log("drink", drink);
                 vm.drink = drink;
                 console.log(vm.drink);
+                vm.showStuff = true;
               });
           })
           .catch(function failHandler(xhr){

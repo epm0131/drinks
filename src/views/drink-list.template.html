@@ -7,11 +7,11 @@
   <input type='submit' value='submit'>
   <section>
       <aside>
-      <li>{{list.drink[0].strDrink}}</li>
-      <li>{{list.drink[0].strCategory}}</li>
-      <li>{{list.drink[0].strGlass}}</li>
-      <li>{{list.drink[0].strInstructions}}</li>
-    </aside>
+        <li>{{list.drink[0].strDrink}}</li>
+        <li>{{list.drink[0].strCategory}}</li>
+        <li>{{list.drink[0].strGlass}}</li>
+        <li>{{list.drink[0].strInstructions}}</li>
+     </aside>
     <section>
       <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
       <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
@@ -31,10 +31,19 @@
       <li>{{list.drink[0].strMeasure4}}</li>
       <li>{{list.drink[0].strMeasure5}}</li>
     </ul>
+    <cite>
+      <img src='{{list.drink[0].strDrinkThumb}}'>
+    </cite>
   </section>
-  <cite>
-    <img src='{{list.drink[0].strDrinkThumb}}'>
+
+  <cite class="randomPicture">
+    <img src='{{list.randomDrink.strDrinkThumb}}'>
+    <img src='{{list.randomDrink1.strDrinkThumb}}'>
+    <img src='{{list.randomDrink2.strDrinkThumb}}'>
+    <img src='{{list.randomDrink3.strDrinkThumb}}'>
+    <img src='{{list.randomDrink4.strDrinkThumb}}'>
   </cite>
+
 
 </form>
 

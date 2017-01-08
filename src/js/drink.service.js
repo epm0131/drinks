@@ -7,14 +7,12 @@
     DrinkService.$inject = [ '$http' ];
 
     function DrinkService($http) {
-      var ingredient = null;
-      var blankIngredient = null;
 
       return {
 
         getOneDrink: getOneDrink,
         getAllDrinks: getAllDrinks,
-        getRandomDrink: getRandomDrink
+        getRandomDrink: getRandomDrink,
 
       };
       /**
@@ -33,10 +31,6 @@
           method: 'GET'
         })
         .then(function transformDrinkResponse(response) {
-           ingredient = response.data.drinks[0].strIngredient4;
-          if (ingredient === '') {
-            blankIngredient = true;
-          }
           return response.data.drinks;
         });
       }

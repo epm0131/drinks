@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [ 'src/js/**/*.js' ],
-        tasks: [ 'jshint', 'karma', 'concat' ]
+        tasks: [ 'jshint', 'concat' ]
       },
       test: {
         files: [ 'test/specs/**/*.js' ],
@@ -155,5 +155,5 @@ module.exports = function(grunt) {
  grunt.loadNpmTasks('grunt-contrib-watch');
 
  grunt.registerTask('test', ['jshint', 'karma']);
- grunt.registerTask('default', [ 'clean', 'test', 'copy', 'sass', 'concat' ]);
+ grunt.registerTask('default', [ 'clean', 'copy', 'sass', 'concat' ]);
 };

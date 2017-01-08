@@ -1,3 +1,30 @@
-body {
-  width: 100%
+.RandomDrink {
+  border: 1px solid #ffffff;
+  // background-color: transparent;
+  width: 25%;
+    nav {
+      ul {
+        li {
+          list-style: none;
+          color: #ffffff;
+        }
+      }
+    }
+}
+.RandomDrinkOne {
+  section {
+    ul  {
+      list-style: none;
+    }
+  }
+}
+
+.drinkPicture {
+  img {
+    width: 70%;
+  }
+}
+
+.randomPicture {
+  width: 25%;
 }
