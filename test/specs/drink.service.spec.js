@@ -134,6 +134,14 @@
           });
           $httpBackend.flush();
     });
+
+    it('should fail if you do not provide a string for the name', function() {
+      var failedAttempt = DrinkService.getOneDrink(1213434);
+      expect(failedAttempt).to.be.undefined;
+      var failedAttempt1 = DrinkService.getOneDrink();
+      expect(failedAttempt1).to.be.undefined;
+    });
+
 });
 
 describe('Get a random cocktail', function() {
