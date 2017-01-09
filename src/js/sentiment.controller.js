@@ -12,6 +12,7 @@
       this.sentiment = '';
       this.sentimentValue = null;
       this.drink = {};
+      this.dailyMessage = '';
       this.showStuff = false;
       /**
        * Will given a string this will calculate a sentiment based on what words
@@ -24,6 +25,11 @@
         }
         SentimentService.analyzeSentiment(sentiment)
           .then(function successHandler(data){
+            if(data < 0) {
+              vm.dailyMessage = 'I am sorry you are having a bad day! Drink up!!';
+            } else {
+              vm.dailyMessage = 'Cheers!!!!! What can I serve you';
+            }
             vm.sentimentValue = data;
             DrinkService.getRandomDrink()
               .then(function (drink) {
