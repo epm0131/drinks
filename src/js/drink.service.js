@@ -23,7 +23,7 @@
        * @return {promise} Ajax callback promise with transformed data.
        */
       function getOneDrink(drinkName) {
-        if (!drinkName){
+        if(typeof(drinkName) !== 'string') {
           return;
         }
         return $http({

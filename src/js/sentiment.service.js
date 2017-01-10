@@ -4,9 +4,9 @@
   angular.module('drink')
     .factory('SentimentService', SentimentService);
 
-    SentimentService.$inject = [ '$http' ];
+    SentimentService.$inject = [ '$http', '$q' ];
 
-    function SentimentService($http) {
+    function SentimentService($http, $q) {
 
       return {
         analyzeSentiment: analyzeSentiment
@@ -20,7 +20,7 @@
        */
       function analyzeSentiment(sentiment) {
         if(typeof(sentiment) !== 'string') {
-          return;
+          return $q.reject('oops');
         }
         return $http({
           url: '/sentiment?feeling=' + sentiment,
@@ -30,6 +30,7 @@
           }
         })
         .then(function transformSentimentResponse(response){
+          // this returns a number
           return response.data.sentiment;
         });
       }

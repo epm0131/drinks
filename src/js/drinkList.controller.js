@@ -4,9 +4,9 @@
   angular.module('drink')
     .controller('DrinkListController', DrinkListController);
 
-  DrinkListController.$inject = [ 'DrinkService' ];
+  DrinkListController.$inject = [ '$q', 'DrinkService' ];
 
-  function DrinkListController( DrinkService ) {
+  function DrinkListController( $q, DrinkService ) {
     var vm = this;
     this.drinks = [];
     this.randomDrink = {};
@@ -14,6 +14,7 @@
     this.randomDrink2= {};
     this.randomDrink3 = {};
     this.randomDrink4 = {};
+    this.randomDrink5 = {};
     this.drinkName = '';
     this.drink = {};
 
@@ -21,18 +22,20 @@
      * When provided a name of a drink it will pull all the details associated
      * with that drink name.
      * @param  {string} drinkName the name of drink you want to look up
+     * @return {Promise}
      */
     this.lookUpDrink = function lookUpDrink(drinkName){
       if(typeof(drinkName) !== 'string') {
-        return;
+        return $q.reject('oops');
       }
-      DrinkService.getOneDrink(drinkName)
-      .then(function successHandler(data){
-        vm.drink = data;
-      })
-      .catch(function failHandler(xhr) {
-        console.log(xhr);
-      });
+      return DrinkService.getOneDrink(drinkName)
+        .then(function successHandler(data){
+          vm.drink = data;
+          return data;
+        })
+        .catch(function failHandler(xhr) {
+          console.log(xhr);
+        });
     };
 
     DrinkService.getAllDrinks()
@@ -47,7 +50,7 @@
     .then(function successHandler(data) {
       vm.randomDrink = data;
     });
-
+    //
     DrinkService.getRandomDrink()
     .then(function successHandler(data) {
       vm.randomDrink1 = data;
@@ -67,6 +70,11 @@
     .then(function successHandler(data) {
       vm.randomDrink4 = data;
     });
-    
+
+    DrinkService.getRandomDrink()
+    .then(function successHandler(data) {
+      vm.randomDrink5 = data;
+    });
+
   }
 }());
