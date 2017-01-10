@@ -138,8 +138,12 @@ module.exports = function(grunt) {
             'src/js/drink.module.js',
             'src/js/drink.service.js',
             'src/js/drinkList.controller.js',
+            'src/js/sentiment.controller.js',
+            'src/js/sentiment.service.js',
             'test/specs/drink.service.spec.js',
-            'test/specs/drinkList.controller.spec.js'
+            'test/specs/drinkList.controller.spec.js',
+            'test/specs/sentiment.service.spec.js',
+            'test/specs/sentiment.controller.spec.js'
           ]
         }
       }
@@ -155,5 +159,5 @@ module.exports = function(grunt) {
  grunt.loadNpmTasks('grunt-contrib-watch');
 
  grunt.registerTask('test', ['jshint', 'karma']);
- grunt.registerTask('default', [ 'clean', 'copy', 'sass', 'concat' ]);
+ grunt.registerTask('default', [ 'clean','test', 'copy', 'sass', 'concat' ]);
 };
