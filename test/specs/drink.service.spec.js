@@ -44,7 +44,8 @@
           expect(data[0].strDrink).to.equal('57 Chevy with a White License Plate');
           doneCallBack();
         })
-        .catch(function(){
+        .catch(function(err){
+          console.log('err msg', err.message);
           doneCallBack('I hope to never get here!!');
         });
         $httpBackend.flush();
@@ -129,7 +130,8 @@
           expect(data[0].strIngredient5).to.equal('');
           doneCallBack();
         })
-        .catch(function(){
+        .catch(function(err){
+          console.log('err msg', err.message);
           doneCallBack('I hope to never get here!!');
           });
           $httpBackend.flush();
@@ -138,8 +140,12 @@
     it('should fail if you do not provide a string for the name', function() {
       var failedAttempt = DrinkService.getOneDrink(1213434);
       expect(failedAttempt).to.be.undefined;
-      var failedAttempt1 = DrinkService.getOneDrink();
-      expect(failedAttempt1).to.be.undefined;
+    });
+
+    it('should fail if you do not provide a string for the name', function() {
+    var failedAttempt1 = DrinkService.getOneDrink();
+    expect(failedAttempt1).to.be.undefined;
+
     });
 
 });
@@ -221,7 +227,8 @@ describe('Get a random cocktail', function() {
         expect(data.strIngredient5).to.equal('');
         doneCallBack();
       })
-      .catch(function(){
+      .catch(function(err){
+        console.log('err msg', err.message);
         doneCallBack('I hope to never get here!!');
         });
         $httpBackend.flush();

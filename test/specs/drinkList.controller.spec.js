@@ -151,10 +151,18 @@
 
     it('should fail if the name is not a string', function() {
       var failedAttempt = DrinkListController.lookUpDrink(123);
-      expect(failedAttempt).to.be.undefined;
-      var failedAttempt1 = DrinkListController.lookUpDrink();
-      expect(failedAttempt1).to.be.undefined;
+      expect(failedAttempt).to.be.a('object');
+      expect(failedAttempt.then).to.be.a('function');
+      expect(failedAttempt.catch).to.be.a('function');
     });
+
+    it('should fail if the name is not a string', function() {
+      var failedAttempt = DrinkListController.lookUpDrink();
+      expect(failedAttempt).to.be.a('object');
+      expect(failedAttempt.then).to.be.a('function');
+      expect(failedAttempt.catch).to.be.a('function');
+    });
+
 
 
   });
