@@ -135,6 +135,8 @@
     it('should be able to get a cocktail when given a name', function(doneCallBack) {
       var result = DrinkListController.lookUpDrink('Margarita');
       expect(result).to.be.an('object');
+      expect(result.then).to.be.a('function');
+      expect(result.catch).to.be.a('function');
 
       result
         .then(function(data) {

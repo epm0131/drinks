@@ -19,9 +19,7 @@
       $httpBackend
         .whenGET('/sentiment?feeling=happy')
         .respond({
-          data: {
-            sentiment: 1
-          }
+          sentiment: 1
         });
 
       $httpBackend
@@ -37,13 +35,12 @@
 
       result
         .then(function(data) {
-          console.log('do i get here!!??!?!?!?!',data);
-          expect(data.data.sentiment).to.equal(1);
+          expect(data).to.be.a('number');
           doneCallBack();
         })
         .catch(function(err) {
           console.log('err msg', err.message);
-          doneCallBack('I hope to never get here!!!');
+          doneCallBack('inside catch of analyze sentiment (which I should not get into)');
         });
         $httpBackend.flush();
     });

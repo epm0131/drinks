@@ -13,17 +13,17 @@
     beforeEach(module('drink'));
 
     beforeEach(module(function($provide){
-      $provide.value('SentimentService', 'DrinkService', mockSentimentService, mockDrinkService);
+      $provide.value('SentimentService', mockSentimentService);
+      $provide.value('DrinkService', mockDrinkService);
     }));
 
     beforeEach(inject(function($controller, $q, _$rootScope_) {
       $rootScope = _$rootScope_;
       mockSentimentService.analyzeSentiment = function() {
         return $q.resolve({
-          data: {
             sentiment: 1
-          }
-        }),
+        });
+      };
       mockDrinkService.getRandomDrink = function() {
         return $q.resolve([
           {
@@ -68,7 +68,6 @@
           }
         ]);
         };
-      };
       SentimentController = $controller('SentimentController');
     }));
 
@@ -77,12 +76,45 @@
       expect(SentimentController.dailyMessage).to.be.a('string');
       expect(SentimentController.sentimentValue).to.be.null;
       expect(SentimentController.displayDrinkDetails).to.equal(false);
-
+      expect(SentimentController.happyArray[0]).to.be.a('string');
+      expect(SentimentController.sadArray[0]).to.be.a('string');
     });
 
-    // it('should give a numeric value when given a sentiment', function(){
-    //   var result = SentimentController.calculateSentiment('happy');
-    //   expect(result).to.be.an('object');
-    // });
+    it('should give a random number based on a sentiment', function(doneCallBack){
+      expect(SentimentController.displayDrinkDetails).to.equal(false);
+      expect(SentimentController.drink).to.be.a('object');
+      var result = SentimentController.calculateSentiment('happy');
+      expect(result).to.be.an('object');
+      expect(result.then).to.be.a('function');
+      expect(result.catch).to.be.a('function');
+
+      result
+        .then(function(sentiment) {
+          expect(sentiment.sentiment).to.be.a('number');
+          expect(SentimentController.dailyMessage).to.be.oneOf(['Cheers!!!!', 'Glad you are having a great day!', 'Drinks on the house']);
+          expect(SentimentController.drink[0].strDrink).to.equal('Brandy Alexander');
+          doneCallBack();
+        })
+        .catch(function(err) {
+          console.log('err msg', err.message);
+          doneCallBack('inside catch of calculate sentiment (which I should not get into)');
+        });
+        $rootScope.$digest();
+    });
+
+    it('should fail if a string is not passed as value', function() {
+      var failedAttempt = SentimentController.calculateSentiment(123);
+      expect(failedAttempt).to.be.an('object');
+      expect(failedAttempt.then).to.be.a('function');
+      expect(failedAttempt.catch).to.be.a('function');
+    });
+
+    it('should fail if a string is not passed as value', function() {
+      var failedAttempt = SentimentController.calculateSentiment();
+      expect(failedAttempt).to.be.an('object');
+      expect(failedAttempt.then).to.be.a('function');
+      expect(failedAttempt.catch).to.be.a('function');
+    });
+
   });
 }());
