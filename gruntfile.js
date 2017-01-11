@@ -159,5 +159,5 @@ module.exports = function(grunt) {
  grunt.loadNpmTasks('grunt-contrib-watch');
 
  grunt.registerTask('test', ['jshint', 'karma']);
- grunt.registerTask('default', [ 'clean','test', 'copy', 'sass', 'concat' ]);
+ grunt.registerTask('default', [ 'clean', 'test', 'copy', 'sass', 'concat' ]);
 };
