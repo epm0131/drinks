@@ -1,4 +1,5 @@
 .input-how-are-you {
+  text-transform: capitalize;
   font-size: 2em;
   background-color: rgba(239, 251, 248, 0.6);
   width: 100%;
@@ -40,6 +41,7 @@
 }
 
 .btn-block {
+  text-transform: capitalize;
   font-size: 2em;
   font-family: 'Abril Fatface', cursive;
   background-color: rgba(239, 251, 248, 0.45);
@@ -79,11 +81,22 @@
   background-color: rgba(239, 251, 248, 0.45);
 }
 .randomPictures1 {
+    list-style: none;
     float: right;
     li {
+      background-color: rgba(239, 251, 248, 0.45);
       width: 15em;
+        p {
+          font-family: 'Abril Fatface', cursive;
+          color: #000000;
+        }
         .picturesRandom {
           width: 100%;
     }
   }
+}
+
+.searchDrink {
+  margin: 20% auto 0;
+  width: 40%
 }
