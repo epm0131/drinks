@@ -1,11 +1,21 @@
 header {
   text-align: center;
-  background-color: $headerBackgroundColor;
-
+  font-family: 'Abril Fatface', cursive;
+  background-color: rgba(0,0,0,.5);
+  h1  {
+    width: 8em;
+    margin: 0 auto;
+    font-size: 3em;
+    background-color: rgba(255, 255, 255, 0.65);
+  }
   .mynavbar {
+      ul {
+        margin: 10px;
+        padding: 0 0 0 39px;
+      }
     margin: $navMargin auto;
     width: $navWidth;
-    .home-button{
+    .navButton{
       display: inline-block;
       vertical-align: middle;
       -webkit-transform: perspective($buttonPerspective) translateZ(0);
@@ -15,43 +25,9 @@ header {
       transition-duration: $buttonTransition;
       -webkit-transition-property: transform;
       transition-property: transform;
-      background-color: #AC58FA;
+      background-color: rgba(255, 255, 255, 0.65);
     }
-    .home-button:hover, .home-button:focus, .home-button:active {
-      -webkit-transform: scale($buttonTransform);
-      transform: scale($buttonTransform);
-    }
-
-    .list-button{
-      display: inline-block;
-      vertical-align: middle;
-      -webkit-transform: perspective($buttonPerspective) translateZ(0);
-      transform: perspective($buttonPerspective) translateZ(0);
-      box-shadow: 0 0 $buttonBoxShadow transparent;
-      -webkit-transition-duration: $buttonTransition;
-      transition-duration: $buttonTransition;
-      -webkit-transition-property: transform;
-      transition-property: transform;
-      background-color: #FA8258;
-    }
-    .list-button:hover, .list-button:focus, .list-button:active {
-      -webkit-transform: scale($buttonTransform);
-      transform: scale($buttonTransform);
-    }
-
-    .about-button{
-      display: inline-block;
-      vertical-align: middle;
-      -webkit-transform: perspective($buttonPerspective) translateZ(0);
-      transform: perspective($buttonPerspective) translateZ(0);
-      box-shadow: 0 0 $buttonBoxShadow transparent;
-      -webkit-transition-duration: $buttonTransition;
-      transition-duration: $buttonTransition;
-      -webkit-transition-property: transform;
-      transition-property: transform;
-      background-color: #2EFE64;
-    }
-    .about-button:hover, .about-button:focus, .about-button:active {
+    .navButton:hover, .navButton:focus, .navButton:active {
       -webkit-transform: scale($buttonTransform);
       transform: scale($buttonTransform);
     }
