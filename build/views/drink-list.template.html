@@ -3,38 +3,66 @@
     type='text'
     name='searchDrink'
     placeholder='Type your cocktail here!'
-    ng-model='list.drinkName'>
+    ng-model='list.drinkName'
+    required>
   <input type='submit' value='submit'>
-  <section>
-      <aside>
-      <li>{{list.drink[0].strDrink}}</li>
-      <li>{{list.drink[0].strCategory}}</li>
-      <li>{{list.drink[0].strGlass}}</li>
-      <li>{{list.drink[0].strInstructions}}</li>
-    </aside>
+  <section class='searchDrink' ng-show='list.displayDrinkDetails'>
+        <ul>
+          <li>{{list.drink[0].strDrink}}</li>
+          <li>{{list.drink[0].strCategory}}</li>
+          <li>{{list.drink[0].strGlass}}</li>
+          <li>{{list.drink[0].strInstructions}}</li>
+        </ul>
     <section>
-      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
-      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
-      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient3}}-small.png">
-      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient4}}-small.png">
-      <img src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient5}}-small.png">
+      <ul>
+        <li>
+          <img ng-show='list.drink[0].strIngredient1'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
+          <p>{{list.drink[0].strIngredient1}}</p>
+          <p>{{list.drink[0].strMeasure1}}</p>
+        </li>
+        <li>
+          <img ng-show='list.drink[0].strIngredient2'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
+          <p>{{list.drink[0].strIngredient2}}</p>
+          <p>{{list.drink[0].strMeasure2}}</p>
+        </li>
+        <li>
+          <img ng-show='list.drink[0].strIngredient3'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient3}}-small.png">
+          <p>{{list.drink[0].strIngredient3}}</p>
+          <p>{{list.drink[0].strMeasure3}}</p>
+        </li>
+        <li>
+          <img ng-show='list.drink[0].strIngredient4'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient4}}-small.png">
+          <p>{{list.drink[0].strIngredient4}}</p>
+          <p>{{list.drink[0].strMeasure4}}</p>
+        </li>
+        <li>
+          <img ng-show='list.drink[0].strIngredient5'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient5}}-small.png">
+          <p>{{list.drink[0].strIngredient5}}</p>
+          <p>{{list.drink[0].strMeasure5}}</p>
+        </li>
+      </ul>
     </section>
-    <ul>
-      <li>{{list.drink[0].strIngredient1}}</li>
-      <li>{{list.drink[0].strIngredient2}}</li>
-      <li>{{list.drink[0].strIngredient3}}</li>
-      <li>{{list.drink[0].strIngredient4}}</li>
-      <li>{{list.drink[0].strIngredient5}}</li>
-      <li>{{list.drink[0].strMeasure1}}</li>
-      <li>{{list.drink[0].strMeasure2}}</li>
-      <li>{{list.drink[0].strMeasure3}}</li>
-      <li>{{list.drink[0].strMeasure4}}</li>
-      <li>{{list.drink[0].strMeasure5}}</li>
-    </ul>
+    <cite>
+      <img src='{{list.drink[0].strDrinkThumb}}'>
+    </cite>
   </section>
-  <cite>
-    <img src='{{list.drink[0].strDrinkThumb}}'>
-  </cite>
+
+  <ul class='randomPictures1'>
+    <li ng-repeat='randomDrink in list.randomDrinkArray'>
+      <img class='picturesRandom' src='{{randomDrink.strDrinkThumb}}'>
+      <p>{{randomDrink.strDrink}}</p>
+    </li>
+  </ul>
+
+  <!-- <cite class="randomPicture">
+    <img src='{{list.randomDrink.strDrinkThumb}}'>
+    <img src='{{list.randomDrink1.strDrinkThumb}}'>
+    <img src='{{list.randomDrink2.strDrinkThumb}}'>
+    <img src='{{list.randomDrink3.strDrinkThumb}}'>
+    <img src='{{list.randomDrink4.strDrinkThumb}}'>
+    <img src='{{list.randomDrink5.strDrinkThumb}}'>
+  </cite> -->
+
 
 </form>
 

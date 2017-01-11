@@ -42,14 +42,12 @@
     DrinkService.$inject = [ '$http' ];
 
     function DrinkService($http) {
-      var ingredient = null;
-      var blankIngredient = null;
 
       return {
 
         getOneDrink: getOneDrink,
         getAllDrinks: getAllDrinks,
-        getRandomDrink: getRandomDrink
+        getRandomDrink: getRandomDrink,
 
       };
       /**
@@ -60,7 +58,7 @@
        * @return {promise} Ajax callback promise with transformed data.
        */
       function getOneDrink(drinkName) {
-        if (!drinkName){
+        if(typeof(drinkName) !== 'string') {
           return;
         }
         return $http({
@@ -68,10 +66,6 @@
           method: 'GET'
         })
         .then(function transformDrinkResponse(response) {
-           ingredient = response.data.drinks[0].strIngredient4;
-          if (ingredient === '') {
-            blankIngredient = true;
-          }
           return response.data.drinks;
         });
       }
@@ -121,30 +115,36 @@
   angular.module('drink')
     .controller('DrinkListController', DrinkListController);
 
-  DrinkListController.$inject = [ 'DrinkService' ];
+  DrinkListController.$inject = [ '$q', 'DrinkService' ];
 
-  function DrinkListController( DrinkService ) {
+  function DrinkListController( $q, DrinkService ) {
     var vm = this;
     this.drinks = [];
+    this.randomDrinkArray = [];
+    this.randomDrink = {};
     this.drinkName = '';
     this.drink = {};
+    this.displayDrinkDetails = false;
 
     /**
      * When provided a name of a drink it will pull all the details associated
      * with that drink name.
      * @param  {string} drinkName the name of drink you want to look up
+     * @return {Promise}
      */
     this.lookUpDrink = function lookUpDrink(drinkName){
       if(typeof(drinkName) !== 'string') {
-        return;
+        return $q.reject('oops');
       }
-      DrinkService.getOneDrink(drinkName)
-      .then(function successHandler(data){
-        vm.drink = data;
-      })
-      .catch(function failHandler(xhr) {
-        console.log(xhr);
-      });
+      return DrinkService.getOneDrink(drinkName)
+        .then(function successHandler(data){
+          vm.drink = data;
+          vm.displayDrinkDetails = true;
+          return data;
+        })
+        .catch(function failHandler(xhr) {
+          console.log(xhr);
+        });
     };
 
     DrinkService.getAllDrinks()
@@ -154,7 +154,23 @@
     .catch(function failHandler(xhr){
       console.log(xhr);
     });
-
+    /**
+     * This function uses recursion to make multiple ajax calls and grabs a random
+     * drinks.
+     * @param  {number} numberOfDrinks maxium number of random drinks.
+     */
+    this.buildRandomArrayOfDrinks = function buildRandomArrayOfDrinks(numberOfDrinks) {
+      DrinkService.getRandomDrink()
+      .then(function successHandler(data) {
+        vm.randomDrinkArray.push(data);
+        if (vm.randomDrinkArray.length < numberOfDrinks) {
+          vm.buildRandomArrayOfDrinks(numberOfDrinks);
+        } else {
+          return;
+        }
+      });
+    };
+    this.buildRandomArrayOfDrinks(10);
   }
 }());
 
@@ -164,14 +180,18 @@
   angular.module('drink')
     .controller('SentimentController', SentimentController);
 
-    SentimentController.$inject = [ 'SentimentService', 'DrinkService' ];
+    SentimentController.$inject = [ '$q', 'SentimentService', 'DrinkService' ];
 
-    function SentimentController( SentimentService, DrinkService ) {
+    function SentimentController( $q, SentimentService, DrinkService ) {
 
       var vm = this;
+      this.happyArray = ['Cheers!!!!', 'Glad you are having a great day!', 'Drinks on the house' ];
+      this.sadArray = ['Sorry you are having a bad day', 'Drink up!', 'Here try this!'];
       this.sentiment = '';
       this.sentimentValue = null;
       this.drink = {};
+      this.dailyMessage = '';
+      this.displayDrinkDetails = false;
       /**
        * Will given a string this will calculate a sentiment based on what words
        * are passed into this funciton.
@@ -179,23 +199,41 @@
        */
       this.calculateSentiment = function calculateSentiment(sentiment) {
         if(typeof(sentiment) !== 'string') {
-          return;
+          return $q.reject('oopps!!');
         }
-        SentimentService.analyzeSentiment(sentiment)
+        return SentimentService.analyzeSentiment(sentiment)
           .then(function successHandler(data){
+            if(data < 0) {
+              vm.dailyMessage = vm.randomMessage('sad');
+            } else {
+              vm.dailyMessage = vm.randomMessage('happy');
+            }
             vm.sentimentValue = data;
-            DrinkService.getRandomDrink()
+            return DrinkService.getRandomDrink()
               .then(function (drink) {
-                console.log("drink", drink);
                 vm.drink = drink;
-                console.log(vm.drink);
+                vm.displayDrinkDetails = true;
+                return data;
               });
           })
           .catch(function failHandler(xhr){
             console.log(xhr);
           });
       };
-
+      /**
+       *This functions allows my analyzeSentiment to be able to grab a message
+       *that is either happy or sad.
+       * @param  {string} mood is happy or sad
+       * @return {string}      a description of your mood
+       */
+      this.randomMessage = function randomMessage(mood){
+        var random = Math.floor(Math.random()*3);
+        if(mood === 'happy'){
+          return this.happyArray[random];
+        } else if(mood === 'sad') {
+          return this.sadArray[random];
+        }
+      };
     }
 
 }());
@@ -206,9 +244,9 @@
   angular.module('drink')
     .factory('SentimentService', SentimentService);
 
-    SentimentService.$inject = [ '$http' ];
+    SentimentService.$inject = [ '$http', '$q' ];
 
-    function SentimentService($http) {
+    function SentimentService($http, $q) {
 
       return {
         analyzeSentiment: analyzeSentiment
@@ -222,7 +260,7 @@
        */
       function analyzeSentiment(sentiment) {
         if(typeof(sentiment) !== 'string') {
-          return;
+          return $q.reject('oops');
         }
         return $http({
           url: '/sentiment?feeling=' + sentiment,
@@ -232,6 +270,7 @@
           }
         })
         .then(function transformSentimentResponse(response){
+          // this returns a number
           return response.data.sentiment;
         });
       }

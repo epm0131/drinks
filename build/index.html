@@ -6,24 +6,25 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Poiret+One" rel="stylesheet">
     <link href='css/style.css' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, user-scalable=no"/>  </head>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+  </head>
   <body>
 
     <header>
       <h1>Happy! Hour</h1>
       <nav class='mynavbar'>
         <ul class='nav nav-pills'>
-          <li class='home-button'><a ui-sref="home">Home</a></li>
-          <li><a ui-sref="list">List</a></li>
-          <li><a ui-sref="about">About Us</a></li>
+          <li class='navButton'><a ui-sref="home">Home</a></li>
+          <li class='navButton'><a ui-sref="list">List</a></li>
         </ul>
       </nav>
     </header>
 
     <main ui-view></main>
 
-    <footer>
+    <footer class='footer'>
       <p>&copy 2016 Ettore!</p>
     </footer>
 
