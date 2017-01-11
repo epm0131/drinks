@@ -1,4 +1,5 @@
 .input-how-are-you {
+  font-size: 2em;
   background-color: rgba(239, 251, 248, 0.6);
   width: 100%;
   height: 40px;
@@ -38,7 +39,8 @@
   background-color: rgba(255, 255, 255, 0.65);
 }
 
-.btn btn-default btn-lg btn-block {
+.btn-block {
+  font-size: 2em;
   font-family: 'Abril Fatface', cursive;
   background-color: rgba(239, 251, 248, 0.45);
 }
@@ -77,8 +79,11 @@
   background-color: rgba(239, 251, 248, 0.45);
 }
 .randomPictures1 {
-  display: inline-block;
-  .picturesRandom {
-    width: 30%;
+    float: right;
+    li {
+      width: 15em;
+        .picturesRandom {
+          width: 100%;
+    }
   }
 }

@@ -16,6 +16,7 @@ header {
     margin: $navMargin auto;
     width: $navWidth;
     .navButton{
+      color: #000000;
       display: inline-block;
       vertical-align: middle;
       -webkit-transform: perspective($buttonPerspective) translateZ(0);
@@ -30,6 +31,7 @@ header {
     .navButton:hover, .navButton:focus, .navButton:active {
       -webkit-transform: scale($buttonTransform);
       transform: scale($buttonTransform);
+
     }
   }
 }
