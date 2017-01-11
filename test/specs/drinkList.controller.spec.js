@@ -120,16 +120,13 @@
 
     it('should have correct scope variables', function() {
       expect(DrinkListController.drinks).to.be.an('array');
+      expect(DrinkListController.randomDrinkArray).to.be.an('array');
       expect(DrinkListController.drinks.length).to.equal(0);
       expect(DrinkListController.drink).to.be.a('object');
       expect(DrinkListController.drinkName).to.be.a('string');
       expect(DrinkListController.randomDrink).to.be.a('object');
-      expect(DrinkListController.randomDrink1).to.be.a('object');
-      expect(DrinkListController.randomDrink2).to.be.a('object');
-      expect(DrinkListController.randomDrink3).to.be.a('object');
-      expect(DrinkListController.randomDrink4).to.be.a('object');
-      expect(DrinkListController.randomDrink5).to.be.a('object');
       expect(DrinkListController.lookUpDrink).to.be.a('function');
+      expect(DrinkListController.displayDrinkDetails).to.equal(false);
     });
 
     it('should be able to get a cocktail when given a name', function(doneCallBack) {

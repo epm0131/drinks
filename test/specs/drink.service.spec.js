@@ -120,6 +120,7 @@
 
     it('should be able to GET a cocktail with all of its details', function (doneCallBack){
       var result = DrinkService.getOneDrink('margarita');
+      console.log('I should be a drink',result);
       expect(result).to.be.a('object');
       expect(result.then).to.be.a('function');
       expect(result.catch).to.be.a('function');
