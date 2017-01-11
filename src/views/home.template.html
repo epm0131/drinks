@@ -1,57 +1,59 @@
 <h1 class='welcoming'>Take a seat and let me offer you a drink.</h1>
 
-<form class='form-home'name='howAreYou' ng-submit=feelings.calculateSentiment(feelings.sentiment)>
+<form class='form-home' name='howAreYou' ng-class='{ moveForm: feelings.displayDrinkDetails }'; ng-submit=feelings.calculateSentiment(feelings.sentiment)>
+  <label>How are ya feeling?</label>
   <input
     class='input-how-are-you'
     type='text'
     name='howAreYou'
-    placeholder='How are you today??'
+    placeholder="i.e., it's been a rough day"
     ng-model='feelings.sentiment'
     required>
-  <input class='btn btn-default btn-lg btn-block' type='submit' value='submit'>
-  <p class='mySentimentMessage'>{{feelings.dailyMessage}}</p>
-  <section ng-show='feelings.displayDrinkDetails' class='RandomDrink'>
-    <h2 class='openMessage'>Drink up!!!</h2>
-    <ul class='drink-profile'>
-      <li>
-        <label class='label-info' for='Name'>Drink Name</label>
-        <p id='Name'>{{feelings.drink.strDrink}}</p>
-      </li>
-      <li>
-        <img class='drinkPicture' src='{{feelings.drink.strDrinkThumb}}'>
-      </li>
-      <li class='mix'>
-        <label class='label-info' for='HowToMake'>Mixology</label>
-        <p id='HowToMake'>{{feelings.drink.strInstructions}}</p>
-      </li>
-    </ul>
-    <ul class='ingredientPictures'>
-      <li>
-        <img ng-show='feelings.drink.strIngredient1' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient1}}-small.png'>
-        <p>{{feelings.drink.strIngredient1}}</p>
-        <p>{{feelings.drink.strMeasure1}}</p>
-      </li>
-      <li>
-        <img ng-show='feelings.drink.strIngredient2' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient2}}-small.png'>
-        <p>{{feelings.drink.strIngredient2}}</p>
-        <p>{{feelings.drink.strMeasure2}}</p>
-      </li>
-      <li>
-        <img ng-show='feelings.drink.strIngredient3' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient3}}-small.png'>
-        <p>{{feelings.drink.strIngredient3}}</p>
-        <p>{{feelings.drink.strMeasure3}}</p>
-      </li>
-      <li>
-        <img ng-show='feelings.drink.strIngredient4' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient4}}-small.png'>
-        <p>{{feelings.drink.strIngredient4}}</p>
-        <p>{{feelings.drink.strMeasure4}}</p>
-      </li>
-      <li>
-        <img ng-show='feelings.drink.strIngredient5' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient5}}-small.png'>
-        <p>{{feelings.drink.strIngredient5}}</p>
-        <p>{{feelings.drink.strMeasure5}}</p>
-      </li>
-    </ul>
-  </section>
-
+  <input class='btn btn-default btn-lg btn-block' type='submit' value='Another round'>
 </form>
+
+<p class='mySentimentMessage'>{{feelings.dailyMessage}}</p>
+
+<section ng-show='feelings.displayDrinkDetails' class='RandomDrink'>
+  <h2 class='openMessage'>Enjoy your drink!</h2>
+  <ul class='drink-profile'>
+    <li>
+      <label class='label-info' for='Name'>Drink Name</label>
+      <p id='Name'>{{feelings.drink.strDrink}}</p>
+    </li>
+    <li>
+      <img class='drinkPicture' src='{{feelings.drink.strDrinkThumb}}'>
+    </li>
+    <li class='mix'>
+      <label class='label-info' for='HowToMake'>Mixology</label>
+      <p id='HowToMake'>{{feelings.drink.strInstructions}}</p>
+    </li>
+  </ul>
+  <ul class='ingredientPictures'>
+    <li>
+      <img ng-show='feelings.drink.strIngredient1' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient1}}-small.png'>
+      <p>{{feelings.drink.strIngredient1}}</p>
+      <p>{{feelings.drink.strMeasure1}}</p>
+    </li>
+    <li>
+      <img ng-show='feelings.drink.strIngredient2' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient2}}-small.png'>
+      <p>{{feelings.drink.strIngredient2}}</p>
+      <p>{{feelings.drink.strMeasure2}}</p>
+    </li>
+    <li>
+      <img ng-show='feelings.drink.strIngredient3' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient3}}-small.png'>
+      <p>{{feelings.drink.strIngredient3}}</p>
+      <p>{{feelings.drink.strMeasure3}}</p>
+    </li>
+    <li>
+      <img ng-show='feelings.drink.strIngredient4' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient4}}-small.png'>
+      <p>{{feelings.drink.strIngredient4}}</p>
+      <p>{{feelings.drink.strMeasure4}}</p>
+    </li>
+    <li>
+      <img ng-show='feelings.drink.strIngredient5' src='http://www.thecocktaildb.com/images/ingredients/{{feelings.drink.strIngredient5}}-small.png'>
+      <p>{{feelings.drink.strIngredient5}}</p>
+      <p>{{feelings.drink.strMeasure5}}</p>
+    </li>
+  </ul>
+</section>

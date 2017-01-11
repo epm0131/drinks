@@ -56,9 +56,10 @@
 
 </form>
 
-<ul>
-  <li ng-repeat='drink in list.drinks'>
-    <h1>{{drink.strDrink}}</h1>
-    <img src='{{drink.strDrinkThumb}}'>
-  </li>
-</ul>
+<div class='row'>
+  <div class="col-xs-6 col-md-3" ng-repeat='drink in list.drinks'>
+    <a href="#" class="thumbnail">
+      <img src='{{drink.strDrinkThumb}}' class="" title="{{drink.strDrink}}">
+    </a>
+  </div>
+</div>
