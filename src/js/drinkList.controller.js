@@ -9,14 +9,11 @@
   function DrinkListController( $q, DrinkService ) {
     var vm = this;
     this.drinks = [];
+    this.randomDrinkArray = [];
     this.randomDrink = {};
-    this.randomDrink1 = {};
-    this.randomDrink2= {};
-    this.randomDrink3 = {};
-    this.randomDrink4 = {};
-    this.randomDrink5 = {};
     this.drinkName = '';
     this.drink = {};
+    this.displayDrinkDetails = false;
 
     /**
      * When provided a name of a drink it will pull all the details associated
@@ -31,6 +28,7 @@
       return DrinkService.getOneDrink(drinkName)
         .then(function successHandler(data){
           vm.drink = data;
+          vm.displayDrinkDetails = true;
           return data;
         })
         .catch(function failHandler(xhr) {
@@ -45,36 +43,22 @@
     .catch(function failHandler(xhr){
       console.log(xhr);
     });
-
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink = data;
-    });
-    //
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink1 = data;
-    });
-
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink2 = data;
-    });
-
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink3 = data;
-    });
-
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink4 = data;
-    });
-
-    DrinkService.getRandomDrink()
-    .then(function successHandler(data) {
-      vm.randomDrink5 = data;
-    });
-
+    /**
+     * This function uses recursion to make multiple ajax calls and grabs a random
+     * drinks.
+     * @param  {number} numberOfDrinks maxium number of random drinks.
+     */
+    this.buildRandomArrayOfDrinks = function buildRandomArrayOfDrinks(numberOfDrinks) {
+      DrinkService.getRandomDrink()
+      .then(function successHandler(data) {
+        vm.randomDrinkArray.push(data);
+        if (vm.randomDrinkArray.length < numberOfDrinks) {
+          vm.buildRandomArrayOfDrinks(numberOfDrinks);
+        } else {
+          return;
+        }
+      });
+    };
+    this.buildRandomArrayOfDrinks(10);
   }
 }());
