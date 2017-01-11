@@ -1,11 +1,12 @@
 <form name='searchDrink' ng-submit='list.lookUpDrink(list.drinkName)'>
   <input
+    class='input-how-are-you'
     type='text'
     name='searchDrink'
     placeholder='Type your cocktail here!'
     ng-model='list.drinkName'
     required>
-  <input type='submit' value='submit'>
+  <input class='btn btn-default btn-lg btn-block' type='submit' value='submit'>
   <section class='searchDrink' ng-show='list.displayDrinkDetails'>
         <ul>
           <li>{{list.drink[0].strDrink}}</li>
@@ -46,29 +47,18 @@
       <img src='{{list.drink[0].strDrinkThumb}}'>
     </cite>
   </section>
-
   <ul class='randomPictures1'>
-    <li class= 'randomClass' ng-repeat='randomDrink in list.randomDrinkArray'>
+    <li ng-repeat='randomDrink in list.randomDrinkArray'>
       <img class='picturesRandom' src='{{randomDrink.strDrinkThumb}}'>
       <p>{{randomDrink.strDrink}}</p>
     </li>
   </ul>
 
-  <!-- <cite class="randomPicture">
-    <img src='{{list.randomDrink.strDrinkThumb}}'>
-    <img src='{{list.randomDrink1.strDrinkThumb}}'>
-    <img src='{{list.randomDrink2.strDrinkThumb}}'>
-    <img src='{{list.randomDrink3.strDrinkThumb}}'>
-    <img src='{{list.randomDrink4.strDrinkThumb}}'>
-    <img src='{{list.randomDrink5.strDrinkThumb}}'>
-  </cite> -->
-
-
 </form>
 
-<!-- <ul>
+<ul>
   <li ng-repeat='drink in list.drinks'>
     <h1>{{drink.strDrink}}</h1>
     <img src='{{drink.strDrinkThumb}}'>
   </li>
-</ul> -->
+</ul>
