@@ -10,7 +10,7 @@
 
       var vm = this;
       this.happyArray = ['Cheers!!!!', 'Glad you are having a great day!', 'Drinks on the house' ];
-      this.sadArray = ['Sorry you are having a bad day', 'Drink up!', 'Here try in this!'];
+      this.sadArray = ['Sorry you are having a bad day', 'Drink up!', 'Here try this!'];
       this.sentiment = '';
       this.sentimentValue = null;
       this.drink = {};
@@ -45,7 +45,8 @@
           });
       };
       /**
-       *
+       *This functions allows my analyzeSentiment to be able to grab a message
+       *that is either happy or sad.
        * @param  {string} mood is happy or sad
        * @return {string}      a description of your mood
        */
