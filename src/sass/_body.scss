@@ -70,8 +70,8 @@
     font-weight: bold;
     text-align: center;
     background-color: $homePageTextBg;
-    width: 35%;
-    margin: 0 auto;
+    width: 75%;
+    margin: 0 auto 35px;
     font-size: 2em;
 }
 
@@ -118,12 +118,10 @@
   padding: 30px;
   border-radius:7px;
   border: 1px solid #8e8e8e;
-    .openMessage {
-      text-align: center;
-    }
     ul {
     list-style: none;
       li img {
+        float: left;
         width: 40%;
       }
   }
