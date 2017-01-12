@@ -12,17 +12,15 @@
   <input class='btn btn-default btn-lg btn-block' type='submit' value='Another round'>
 </form>
 
-<p class='mySentimentMessage'>{{feelings.dailyMessage}}</p>
-
 <section ng-show='feelings.displayDrinkDetails' class='RandomDrink'>
-  <h2 class='openMessage'>Enjoy your drink!</h2>
+  <p class='mySentimentMessage'>{{feelings.dailyMessage}}</p>
   <ul class='drink-profile'>
+    <li>
+      <img class='drinkPicture' src='{{feelings.drink.strDrinkThumb}}'>
+    </li>
     <li>
       <label class='label-info' for='Name'>Drink Name</label>
       <p id='Name'>{{feelings.drink.strDrink}}</p>
-    </li>
-    <li>
-      <img class='drinkPicture' src='{{feelings.drink.strDrinkThumb}}'>
     </li>
     <li class='mix'>
       <label class='label-info' for='HowToMake'>Mixology</label>
