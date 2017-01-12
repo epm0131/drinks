@@ -9,8 +9,8 @@
     function SentimentController( $q, SentimentService, DrinkService ) {
 
       var vm = this;
-      this.happyArray = ['Cheers!!!!', 'Glad you are having a great day!', 'Drinks on the house' ];
-      this.sadArray = ['Sorry you are having a bad day', 'Drink up!', 'Here try this!'];
+      this.happyArray = ["console.log('Cheers!!!')", 'Glad you are having a great day!', 'Drinks on the house!' ];
+      this.sadArray = ['Sorry you are having a bad day.', 'Drink up!', 'This should cheer you up!', "console.log('Lets forget this day!!!')"];
       this.sentiment = '';
       this.sentimentValue = null;
       this.drink = {};
@@ -51,7 +51,7 @@
        * @return {string}      a description of your mood
        */
       this.randomMessage = function randomMessage(mood){
-        var random = Math.floor(Math.random()*3);
+        var random = Math.floor(Math.random()*4);
         if(mood === 'happy'){
           return this.happyArray[random];
         } else if(mood === 'sad') {
