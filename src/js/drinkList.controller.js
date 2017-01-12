@@ -59,6 +59,6 @@
         }
       });
     };
-    this.buildRandomArrayOfDrinks(4);
+    this.buildRandomArrayOfDrinks(25);
   }
 }());
