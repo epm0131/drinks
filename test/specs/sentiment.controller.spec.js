@@ -91,7 +91,7 @@
       result
         .then(function(sentiment) {
           expect(sentiment.sentiment).to.be.a('number');
-          expect(SentimentController.dailyMessage).to.be.oneOf(['Cheers!!!!', 'Glad you are having a great day!', 'Drinks on the house']);
+          expect(SentimentController.dailyMessage).to.be.oneOf(['Cheers!!!', 'Glad you are having a great day!', 'Drinks on the house!', 'Keep it up!!' ]);
           expect(SentimentController.drink[0].strDrink).to.equal('Brandy Alexander');
           doneCallBack();
         })
