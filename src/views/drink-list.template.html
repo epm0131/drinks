@@ -1,4 +1,5 @@
-<form name='searchDrink' ng-submit='list.lookUpDrink(list.drinkName)'>
+<form class='form-home'name='searchFeature' ng-submit='list.lookUpDrink(list.drinkName)' ng-class='{ moveForm: list.displayDrinkDetails }'>
+  <label>What are you looking for?</label>
   <input
     class='input-how-are-you'
     type='text'
@@ -6,60 +7,57 @@
     placeholder='Type your cocktail here!'
     ng-model='list.drinkName'
     required>
-  <input class='btn btn-default btn-lg btn-block' type='submit' value='submit'>
-  <section class='searchDrink' ng-show='list.displayDrinkDetails'>
-        <ul>
-          <li>{{list.drink[0].strDrink}}</li>
-          <li>{{list.drink[0].strCategory}}</li>
-          <li>{{list.drink[0].strGlass}}</li>
-          <li>{{list.drink[0].strInstructions}}</li>
-        </ul>
-    <section>
-      <ul>
-        <li>
-          <img ng-show='list.drink[0].strIngredient1'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
-          <p>{{list.drink[0].strIngredient1}}</p>
-          <p>{{list.drink[0].strMeasure1}}</p>
-        </li>
-        <li>
-          <img ng-show='list.drink[0].strIngredient2'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
-          <p>{{list.drink[0].strIngredient2}}</p>
-          <p>{{list.drink[0].strMeasure2}}</p>
-        </li>
-        <li>
-          <img ng-show='list.drink[0].strIngredient3'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient3}}-small.png">
-          <p>{{list.drink[0].strIngredient3}}</p>
-          <p>{{list.drink[0].strMeasure3}}</p>
-        </li>
-        <li>
-          <img ng-show='list.drink[0].strIngredient4'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient4}}-small.png">
-          <p>{{list.drink[0].strIngredient4}}</p>
-          <p>{{list.drink[0].strMeasure4}}</p>
-        </li>
-        <li>
-          <img ng-show='list.drink[0].strIngredient5'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient5}}-small.png">
-          <p>{{list.drink[0].strIngredient5}}</p>
-          <p>{{list.drink[0].strMeasure5}}</p>
-        </li>
-      </ul>
-    </section>
-    <cite>
+  <input class='btn btn-default btn-lg btn-block' type='submit' value='Show me the Drink!'>
+</form>
+<section class='RandomDrink' ng-show='list.displayDrinkDetails'>
+  <ul>
+    <li>
       <img src='{{list.drink[0].strDrinkThumb}}'>
-    </cite>
-  </section>
-  <ul class='randomPictures1'>
-    <li ng-repeat='randomDrink in list.randomDrinkArray'>
-      <img class='picturesRandom' src='{{randomDrink.strDrinkThumb}}'>
-      <p>{{randomDrink.strDrink}}</p>
+    </li>
+    <li>
+      <label class='label-info' for='Name'>Drink Name</label>
+      <p id='Name'>{{list.drink[0].strDrink}}</p>
+    </li>
+    <li class='mix'>
+      <label class='label-info' for='HowToMake'>Mixology</label>
+      <p id='HowToMake'>{{list.drink[0].strInstructions}}</p>
     </li>
   </ul>
-
-</form>
-
+  <ul class='ingredientPictures'>
+    <li>
+      <img ng-show='list.drink[0].strIngredient1'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient1}}-small.png">
+      <p>{{list.drink[0].strIngredient1}}</p>
+      <p>{{list.drink[0].strMeasure1}}</p>
+    </li>
+    <li>
+      <img ng-show='list.drink[0].strIngredient2'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient2}}-small.png">
+      <p>{{list.drink[0].strIngredient2}}</p>
+      <p>{{list.drink[0].strMeasure2}}</p>
+    </li>
+    <li>
+      <img ng-show='list.drink[0].strIngredient3'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient3}}-small.png">
+      <p>{{list.drink[0].strIngredient3}}</p>
+      <p>{{list.drink[0].strMeasure3}}</p>
+    </li>
+    <li>
+      <img ng-show='list.drink[0].strIngredient4'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient4}}-small.png">
+      <p>{{list.drink[0].strIngredient4}}</p>
+      <p>{{list.drink[0].strMeasure4}}</p>
+    </li>
+    <li>
+      <img ng-show='list.drink[0].strIngredient5'src="http://www.thecocktaildb.com/images/ingredients/{{list.drink[0].strIngredient5}}-small.png">
+      <p>{{list.drink[0].strIngredient5}}</p>
+      <p>{{list.drink[0].strMeasure5}}</p>
+    </li>
+  </ul>
+</section>
 <div class='row'>
-  <div class="col-xs-6 col-md-3" ng-repeat='drink in list.drinks'>
+  <div class="col-xs-6 col-md-3" ng-repeat='randomDrink in list.randomDrinkArray'>
     <a href="#" class="thumbnail">
-      <img src='{{drink.strDrinkThumb}}' class="" title="{{drink.strDrink}}">
+      <img src='{{randomDrink.strDrinkThumb}}'>
+      <div class="caption">
+        <p>"{{randomDrink.strDrink}}"</p>
+      </div>
     </a>
   </div>
 </div>
